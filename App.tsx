@@ -16,8 +16,7 @@ const AuthContext = createContext<{
   logout: () => {},
 });
 
-const API_BASE = 'https://sjkyx.zeabur.app';
-
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'https://sjkyx.zeabur.app') + '/api';
 // ==========================================
 // Configuration
 // ==========================================
@@ -268,14 +267,15 @@ const ArticleDetail = () => {
                <p className="text-sm font-bold text-slate-800">附件资源</p>
                <p className="text-xs text-slate-500 break-all">{article.attachment}</p>
              </div>
-             <a 
-               href={`http://localhost:5000/uploads/${article.attachment}`} 
-               target="_blank"
-               rel="noreferrer"
-               className="text-sm font-bold text-white bg-medical-600 px-4 py-2 rounded hover:bg-medical-700 transition shadow-sm"
-             >
-               下载
-             </a>
+             // 修改后的代码:
+             <a
+              href={`${API_BASE.replace('/api', '')}/uploads/${article.attachment}`}
+              target="_blank"
+              rel="noreferrer"
+              className="..."
+                >
+                下载
+              </a>
           </div>
         )}
       </div>
