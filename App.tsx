@@ -16,7 +16,8 @@ const AuthContext = createContext<{
   logout: () => {},
 });
 
-const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'https://sjkyx.zeabur.app') + '/api';
+const API_BASE = 'https://sjkyx.zeabur.app';
+
 // ==========================================
 // Configuration
 // ==========================================
