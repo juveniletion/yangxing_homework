@@ -1,0 +1,12 @@
+{
+  "build": {
+    "command": "npm run build",
+    "outputDirectory": "dist"
+  },
+  "install": {
+    "command": "npm install"
+  },
+  "framework": "vite",
+  "rootDirectory": "."
+}
+

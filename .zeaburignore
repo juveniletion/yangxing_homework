@@ -1,0 +1,17 @@
+# Zeabur 前端部署忽略文件
+# 忽略后端相关文件和 Python 依赖
+backend/
+requirements.txt
+*.py
+database.sql
+xiaoyuan.env.local
+E/
+metadata.json
+
+# 忽略开发文件
+node_modules/
+dist/
+*.log
+.env.local
+.env.*.local
+
