@@ -260,22 +260,23 @@ const ArticleDetail = () => {
 
         {article.attachment && (
           <div className="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-200 grid grid-cols-[auto_1fr_auto] gap-5 items-center hover:border-medical-200 transition">
-             <div className="w-12 h-12 bg-white rounded-full grid place-items-center shadow-sm text-medical-500">
-               <i className="fa-solid fa-file-arrow-down text-xl"></i>
-             </div>
-             <div className="grid gap-1">
-               <p className="text-sm font-bold text-slate-800">附件资源</p>
-               <p className="text-xs text-slate-500 break-all">{article.attachment}</p>
-             </div>
-             // 修改后的代码:
-             <a
+            <div className="w-12 h-12 bg-white rounded-full grid place-items-center shadow-sm text-medical-500">
+              <i className="fa-solid fa-file-arrow-down text-xl"></i>
+            </div>
+            <div className="grid gap-1">
+              <p className="text-sm font-bold text-slate-800">附件资源</p>
+              <p className="text-xs text-slate-500 break-all">{article.attachment}</p>
+            </div>
+            {/* 附件下载链接 */}
+            <a
               href={`${API_BASE.replace('/api', '')}/uploads/${article.attachment}`}
               target="_blank"
               rel="noreferrer"
-              className="..."
-                >
-                下载
-              </a>
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-medical-600 text-white text-sm font-medium hover:bg-medical-700 transition"
+            >
+              下载
+              <i className="fa-solid fa-arrow-down ml-2 text-xs"></i>
+            </a>
           </div>
         )}
       </div>
