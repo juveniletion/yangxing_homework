@@ -3,18 +3,21 @@
     {
       "name": "frontend",
       "rootDirectory": ".",
-      "framework": "vite",
+      "install": {
+        "command": "npm install --omit=dev"
+      },
       "build": {
         "command": "npm run build",
         "outputDirectory": "dist"
       },
-      "install": {
-        "command": "npm install"
-      }
+      "startCommand": "npm run preview -- --port $PORT"
     },
     {
       "name": "backend",
       "rootDirectory": "./backend",
+      "install": {
+        "command": "pip install -r requirements.txt"
+      },
       "startCommand": "gunicorn --bind 0.0.0.0:$PORT app:app"
     }
   ]
