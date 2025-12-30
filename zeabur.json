@@ -1,12 +1,21 @@
 {
-  "build": {
-    "command": "npm run build",
-    "outputDirectory": "dist"
-  },
-  "install": {
-    "command": "npm install"
-  },
-  "framework": "vite",
-  "rootDirectory": "."
+  "services": [
+    {
+      "name": "frontend",
+      "rootDirectory": ".",
+      "framework": "vite",
+      "build": {
+        "command": "npm run build",
+        "outputDirectory": "dist"
+      },
+      "install": {
+        "command": "npm install"
+      }
+    },
+    {
+      "name": "backend",
+      "rootDirectory": "./backend",
+      "startCommand": "gunicorn --bind 0.0.0.0:$PORT app:app"
+    }
+  ]
 }
-
