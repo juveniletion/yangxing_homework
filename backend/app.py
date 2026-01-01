@@ -315,16 +315,13 @@ def uploaded_file(filename):
 import os  # 确保在文件顶部也导出了 os
 
 if __name__ == "__main__":
+    # 1. 确保在程序启动时创建数据库表（如果表不存在）
     with app.app_context():
         db.create_all()
-        if not User.query.filter_by(role='admin').first():
-            u = User(username='superadmin', email='admin@example.com', role='admin')
-            u.set_password('admin123')
-            db.session.add(u)
-            db.session.commit()
-            print("初始化管理员已创建: admin@example.com / admin123")
-
-    # 修改这里：从环境变量获取端口，如果没有则默认为 5000
+    
+    # 2. 从环境变量中读取端口，如果没有读取到则默认使用 5000
+    # 这对于 Zeabur、Northflank、Render 等平台是必须的
     port = int(os.environ.get("PORT", 5000))
-    # 生产环境建议将 debug 设为 False
-    app.run(host="0.0.0.0", port=port, debug=False)
+    
+    # 3. 监听 0.0.0.0 以允许外部访问
+    app.run(host="0.0.0.0", port=port)
